@@ -29,25 +29,21 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.button1 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.navAdmin = new System.Windows.Forms.Button();
             this.navUser = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.itemsMenu = new System.Windows.Forms.DataGridView();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Discription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.orderBtn = new System.Windows.Forms.Button();
+            this.deletebtn = new System.Windows.Forms.Button();
+            this.editbtn = new System.Windows.Forms.Button();
+            this.addBtn = new System.Windows.Forms.Button();
             this.navBut = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.items = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.itemsMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.items)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -66,15 +62,26 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.button4);
-            this.splitContainer1.Panel2.Controls.Add(this.button2);
-            this.splitContainer1.Panel2.Controls.Add(this.itemsMenu);
-            this.splitContainer1.Panel2.Controls.Add(this.orderBtn);
+            this.splitContainer1.Panel2.AccessibleName = "dispItems";
+            this.splitContainer1.Panel2.Controls.Add(this.items);
+            this.splitContainer1.Panel2.Controls.Add(this.deletebtn);
+            this.splitContainer1.Panel2.Controls.Add(this.editbtn);
+            this.splitContainer1.Panel2.Controls.Add(this.addBtn);
             this.splitContainer1.Panel2.Controls.Add(this.navBut);
             this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
             this.splitContainer1.Size = new System.Drawing.Size(1110, 611);
             this.splitContainer1.SplitterDistance = 307;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(39, 365);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(206, 66);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Users";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
@@ -105,6 +112,7 @@
             this.navUser.TabIndex = 7;
             this.navUser.Text = "Items";
             this.navUser.UseVisualStyleBackColor = true;
+            this.navUser.Click += new System.EventHandler(this.navUser_Click);
             // 
             // label1
             // 
@@ -116,57 +124,35 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "Admin panel";
             // 
-            // itemsMenu
+            // deletebtn
             // 
-            this.itemsMenu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.itemsMenu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Name,
-            this.category,
-            this.price,
-            this.Discription});
-            this.itemsMenu.Location = new System.Drawing.Point(46, 101);
-            this.itemsMenu.Name = "itemsMenu";
-            this.itemsMenu.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            this.itemsMenu.RowTemplate.Height = 28;
-            this.itemsMenu.Size = new System.Drawing.Size(620, 368);
-            this.itemsMenu.TabIndex = 18;
+            this.deletebtn.Location = new System.Drawing.Point(322, 492);
+            this.deletebtn.Name = "deletebtn";
+            this.deletebtn.Size = new System.Drawing.Size(97, 39);
+            this.deletebtn.TabIndex = 20;
+            this.deletebtn.Text = "Delete - ";
+            this.deletebtn.UseVisualStyleBackColor = true;
+            this.deletebtn.Click += new System.EventHandler(this.button4_Click);
             // 
-            // Name
+            // editbtn
             // 
-            this.Name.HeaderText = "Name";
-            this.Name.Name = "Name";
-            this.Name.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Name.Width = 150;
+            this.editbtn.Location = new System.Drawing.Point(454, 492);
+            this.editbtn.Name = "editbtn";
+            this.editbtn.Size = new System.Drawing.Size(97, 39);
+            this.editbtn.TabIndex = 19;
+            this.editbtn.Text = "Edit +";
+            this.editbtn.UseVisualStyleBackColor = true;
+            this.editbtn.Click += new System.EventHandler(this.button2_Click);
             // 
-            // category
+            // addBtn
             // 
-            this.category.HeaderText = "category";
-            this.category.Name = "category";
-            this.category.Width = 150;
-            // 
-            // price
-            // 
-            this.price.HeaderText = "price";
-            this.price.Name = "price";
-            this.price.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.price.Width = 150;
-            // 
-            // Discription
-            // 
-            this.Discription.HeaderText = "Discription";
-            this.Discription.Name = "Discription";
-            this.Discription.ReadOnly = true;
-            this.Discription.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Discription.Width = 150;
-            // 
-            // orderBtn
-            // 
-            this.orderBtn.Location = new System.Drawing.Point(184, 492);
-            this.orderBtn.Name = "orderBtn";
-            this.orderBtn.Size = new System.Drawing.Size(97, 39);
-            this.orderBtn.TabIndex = 17;
-            this.orderBtn.Text = "Add +";
-            this.orderBtn.UseVisualStyleBackColor = true;
+            this.addBtn.Location = new System.Drawing.Point(184, 492);
+            this.addBtn.Name = "addBtn";
+            this.addBtn.Size = new System.Drawing.Size(97, 39);
+            this.addBtn.TabIndex = 17;
+            this.addBtn.Text = "Add +";
+            this.addBtn.UseVisualStyleBackColor = true;
+            this.addBtn.Click += new System.EventHandler(this.orderBtn_Click);
             // 
             // navBut
             // 
@@ -180,33 +166,14 @@
             this.navBut.TabIndex = 16;
             this.navBut.Text = "ITEMS";
             // 
-            // button1
+            // items
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(39, 365);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(206, 66);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Users";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(454, 492);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(97, 39);
-            this.button2.TabIndex = 19;
-            this.button2.Text = "Edit +";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(322, 492);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(97, 39);
-            this.button4.TabIndex = 20;
-            this.button4.Text = "Delete - ";
-            this.button4.UseVisualStyleBackColor = true;
+            this.items.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.items.Location = new System.Drawing.Point(21, 108);
+            this.items.Name = "items";
+            this.items.RowTemplate.Height = 28;
+            this.items.Size = new System.Drawing.Size(667, 337);
+            this.items.TabIndex = 21;
             // 
             // adminPanel
             // 
@@ -216,13 +183,14 @@
             this.Controls.Add(this.splitContainer1);
             this.Name = "adminPanel";
             this.Text = "adminPanel";
+            this.Load += new System.EventHandler(this.adminPanel_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.itemsMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.items)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -234,15 +202,11 @@
         private System.Windows.Forms.Button navAdmin;
         private System.Windows.Forms.Button navUser;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView itemsMenu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn category;
-        private System.Windows.Forms.DataGridViewTextBoxColumn price;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Discription;
-        private System.Windows.Forms.Button orderBtn;
+        private System.Windows.Forms.Button addBtn;
         private System.Windows.Forms.Label navBut;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button deletebtn;
+        private System.Windows.Forms.Button editbtn;
+        private System.Windows.Forms.DataGridView items;
     }
 }

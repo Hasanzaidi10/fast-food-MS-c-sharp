@@ -38,5 +38,36 @@ namespace last_fast__mang_sys
             userOrderMenu obj = new userOrderMenu();
             obj.Show();
         }
+
+        private void BindDataToGrid()
+        {
+            MenuItems obj = new MenuItems("Data Source=(localdb)\\Projects;Initial Catalog=Resturant;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False");
+
+            DataTable dataTable = obj.GetDataFromDataSource();
+
+            // Clear existing columns and data
+            userItems.Columns.Clear();
+            userItems.Rows.Clear();
+
+            // Add columns to the DataGridView
+            foreach (DataColumn column in dataTable.Columns)
+            {
+                userItems.Columns.Add(column.ColumnName, column.ColumnName);
+            }
+
+            // Add data rows to the DataGridView
+            foreach (DataRow row in dataTable.Rows)
+            {
+                userItems.Rows.Add(row.ItemArray);
+            }
+        }
+
+
+        private void userPanel_Load(object sender, EventArgs e)
+        {
+            BindDataToGrid();
+        }
+
+
     }
 }

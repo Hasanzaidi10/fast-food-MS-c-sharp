@@ -67,6 +67,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "cencel";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -179,6 +180,6 @@
         private System.Windows.Forms.Label catlb;
         private System.Windows.Forms.TextBox DiscTxt;
         private System.Windows.Forms.Label dislb;
-        private System.Windows.Forms.Label FormH;
+        public System.Windows.Forms.Label FormH;
     }
 }

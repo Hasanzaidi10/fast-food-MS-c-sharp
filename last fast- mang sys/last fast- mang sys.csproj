@@ -70,6 +70,7 @@
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="Menu.cs" />
+    <Compile Include="order.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserAuthentication.cs" />

@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace last_fast__mang_sys
 {
-    public partial class userOrderMenu : Form
+    public partial class orderBtn : Form
     {
-        public userOrderMenu()
+        public orderBtn()
         {
             InitializeComponent();
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

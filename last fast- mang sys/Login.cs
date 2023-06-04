@@ -57,7 +57,9 @@ namespace last_fast__mang_sys
              
                     if (Auth.GetUserRoleFromDatabase(ConnectionString, emailTxt.Text) == "admin")
                     {
-                        MessageBox.Show("you are Authenticated");
+                        adminPanel obj = new adminPanel();
+                        obj.Show();
+                        this.Hide();
                     }
                     else
                     {

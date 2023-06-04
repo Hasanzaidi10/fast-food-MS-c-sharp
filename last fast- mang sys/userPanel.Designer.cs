@@ -29,22 +29,18 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.label1 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.navAdmin = new System.Windows.Forms.Button();
             this.navUser = new System.Windows.Forms.Button();
-            this.navBut = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.orderBtn = new System.Windows.Forms.Button();
-            this.itemsMenu = new System.Windows.Forms.DataGridView();
-            this.Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Discription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.navBut = new System.Windows.Forms.Label();
+            this.userItems = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.itemsMenu)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userItems)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -64,22 +60,12 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackgroundImage = global::last_fast__mang_sys.Properties.Resources.hp_bg1;
-            this.splitContainer1.Panel2.Controls.Add(this.itemsMenu);
+            this.splitContainer1.Panel2.Controls.Add(this.userItems);
             this.splitContainer1.Panel2.Controls.Add(this.orderBtn);
             this.splitContainer1.Panel2.Controls.Add(this.navBut);
             this.splitContainer1.Size = new System.Drawing.Size(1018, 598);
             this.splitContainer1.SplitterDistance = 339;
             this.splitContainer1.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 23F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(48, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(239, 53);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "user panel";
             // 
             // button3
             // 
@@ -114,6 +100,26 @@
             this.navUser.UseVisualStyleBackColor = true;
             this.navUser.Click += new System.EventHandler(this.navUser_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 23F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(48, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(239, 53);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "user panel";
+            // 
+            // orderBtn
+            // 
+            this.orderBtn.Location = new System.Drawing.Point(281, 507);
+            this.orderBtn.Name = "orderBtn";
+            this.orderBtn.Size = new System.Drawing.Size(121, 37);
+            this.orderBtn.TabIndex = 14;
+            this.orderBtn.Text = "order +";
+            this.orderBtn.UseVisualStyleBackColor = true;
+            this.orderBtn.Click += new System.EventHandler(this.orderBtn_Click);
+            // 
             // navBut
             // 
             this.navBut.AutoSize = true;
@@ -126,58 +132,14 @@
             this.navBut.TabIndex = 12;
             this.navBut.Text = "ITEMS";
             // 
-            // orderBtn
+            // userItems
             // 
-            this.orderBtn.Location = new System.Drawing.Point(281, 507);
-            this.orderBtn.Name = "orderBtn";
-            this.orderBtn.Size = new System.Drawing.Size(121, 37);
-            this.orderBtn.TabIndex = 14;
-            this.orderBtn.Text = "order +";
-            this.orderBtn.UseVisualStyleBackColor = true;
-            this.orderBtn.Click += new System.EventHandler(this.orderBtn_Click);
-            // 
-            // itemsMenu
-            // 
-            this.itemsMenu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.itemsMenu.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Name,
-            this.category,
-            this.price,
-            this.Discription});
-            this.itemsMenu.Location = new System.Drawing.Point(15, 116);
-            this.itemsMenu.Name = "itemsMenu";
-            this.itemsMenu.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            this.itemsMenu.RowTemplate.Height = 28;
-            this.itemsMenu.Size = new System.Drawing.Size(644, 366);
-            this.itemsMenu.TabIndex = 15;
-            // 
-            // Name
-            // 
-            this.Name.HeaderText = "Name";
-            this.Name.Name = "Name";
-            this.Name.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Name.Width = 150;
-            // 
-            // category
-            // 
-            this.category.HeaderText = "category";
-            this.category.Name = "category";
-            this.category.Width = 150;
-            // 
-            // price
-            // 
-            this.price.HeaderText = "price";
-            this.price.Name = "price";
-            this.price.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.price.Width = 150;
-            // 
-            // Discription
-            // 
-            this.Discription.HeaderText = "Discription";
-            this.Discription.Name = "Discription";
-            this.Discription.ReadOnly = true;
-            this.Discription.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Discription.Width = 150;
+            this.userItems.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.userItems.Location = new System.Drawing.Point(18, 119);
+            this.userItems.Name = "userItems";
+            this.userItems.RowTemplate.Height = 28;
+            this.userItems.Size = new System.Drawing.Size(645, 336);
+            this.userItems.TabIndex = 15;
             // 
             // userPanel
             // 
@@ -188,13 +150,14 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "userPanel";
             this.Text = "userPanel";
+            this.Load += new System.EventHandler(this.userPanel_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.itemsMenu)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.userItems)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -208,10 +171,6 @@
         private System.Windows.Forms.Button navUser;
         private System.Windows.Forms.Button orderBtn;
         private System.Windows.Forms.Label navBut;
-        private System.Windows.Forms.DataGridView itemsMenu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn category;
-        private System.Windows.Forms.DataGridViewTextBoxColumn price;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Discription;
+        private System.Windows.Forms.DataGridView userItems;
     }
 }

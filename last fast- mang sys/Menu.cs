@@ -16,91 +16,88 @@ namespace last_fast__mang_sys
         {
         }
 
-        public bool AddMenuItem(string name, double price, string category,string discription)
+        public DataTable GetDataFromDataSource()
         {
-            bool item = false;
+            string connectionString = "Data Source=(localdb)\\Projects;Initial Catalog=Resturant;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False";
+            string query = "SELECT * FROM MenuItemss";
 
-            try
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                string query = "INSERT INTO MenuItems (Name, Price, Category) VALUES (@Name, @Price, @Category, @Discription)";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
 
-                Dictionary<string, object> parameters = new Dictionary<string, object>();
-                parameters["@Name"] = name;
-                parameters["@Price"] = price;
-                parameters["@Category"] = category;
-                parameters["@Discription"] = discription;
-
-                ExecuteNonQuery(query, parameters);
-
-                item = true;
+                return dataTable;
             }
-            catch { 
-            }
-
-            return item;
         }
 
-        public bool ModifyMenuItem(string name, double newPrice, string newCategory, string newDiscription)
-        {
-            bool item = false;
 
+        public bool AddMenuItem(string name, int price, string category, string description)
+        {
             try
             {
-
-                string query = "UPDATE MenuItems SET Price = @NewPrice, Category = @NewCategory, Discription = @newDiscription WHERE Name = @Name";
+                string query = "INSERT INTO MenuItemss (Name, Price, Category, Discription) VALUES (@name, @price, @category, @description)";
 
                 Dictionary<string, object> parameters = new Dictionary<string, object>();
-                parameters["@NewPrice"] = newPrice;
-                parameters["@NewCategory"] = newCategory;
-                parameters["@NewDiscription"] = newDiscription;
-                parameters["@Name"] = name;
+                parameters["@name"] = name;
+                parameters["@price"] = price;
+                parameters["@category"] = category;
+                parameters["@description"] = description;
 
                 ExecuteNonQuery(query, parameters);
-                item = true;
-            }
-            catch { 
-            
-            }
 
-            return item;
+                return true; // Add success
+            }
+            catch (Exception ex)
+            {
+                // Handle the exception or log the error message if needed
+                Console.WriteLine("Error occurred during menu item addition: " + ex.Message);
+                return false; // Operation failure
+            }
+        }
 
+        public bool ModifyMenuItem(string name, int newPrice, string newCategory, string newDescription)
+        {
+            try
+            {
+                string query = "UPDATE MenuItemss SET Price = @newPrice, Category = @newCategory, Discription = @newDescription WHERE Name = @name";
+
+                Dictionary<string, object> parameters = new Dictionary<string, object>();
+                parameters["@newPrice"] = newPrice;
+                parameters["@newCategory"] = newCategory;
+                parameters["@newDescription"] = newDescription;
+                parameters["@name"] = name;
+
+                ExecuteNonQuery(query, parameters);
+
+                return true; // Update success
+            }
+            catch (Exception ex)
+            {
+                // Handle the exception or log the error message if needed
+                Console.WriteLine("Error occurred during menu item modification: " + ex.Message);
+                return false; // Operation failure
+            }
         }
 
         public bool DeleteMenuItem(string name)
         {
-            bool item = false;
             try
             {
-                string query = "DELETE FROM MenuItems WHERE Name = @Name";
+                string query = "DELETE FROM MenuItemss WHERE Name = @name";
 
                 Dictionary<string, object> parameters = new Dictionary<string, object>();
-                parameters["@Name"] = name;
+                parameters["@name"] = name;
 
                 ExecuteNonQuery(query, parameters);
 
-                item = true;
+                return true; // Deletion success
             }
-            catch { 
-            
-            }
-            return item;
-        }
-
-
-        public DataTable GetMenuItems(string connectionString)
-        {
-            string query = "SELECT [Name], [Price], [Category], [Description] FROM [MenuItems]";
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            catch (Exception ex)
             {
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    SqlDataAdapter adapter = new SqlDataAdapter(command);
-                    DataTable dataTable = new DataTable();
-                    adapter.Fill(dataTable);
-
-                    return dataTable;
-                }
+                // Handle the exception or log the error message if needed
+                Console.WriteLine("Error occurred during menu item deletion: " + ex.Message);
+                return false; // Operation failure
             }
         }
 

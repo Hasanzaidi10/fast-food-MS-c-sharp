@@ -20,23 +20,23 @@ namespace last_fast__mang_sys
         private void button2_Click(object sender, EventArgs e)
         {
 
-            double price = Convert.ToDouble(priceTxt.Text);
-            
-            const string ConnectionString = "Data Source=(localdb)\\Projects;Initial Catalog=Resturant;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False";
-            MenuItems Menu = new MenuItems(ConnectionString);
+            int price = int.Parse(priceTxt.Text);
 
-            if (FormH.Text == "Additem")
+            const string ConnectionString = "Data Source=(localdb)\\Projects;Initial Catalog=Resturant;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False";
+            MenuItems menu = new MenuItems(ConnectionString);
+
+            if (FormH.Text == "Add item")
             {
-                if (Menu.AddMenuItem(nameTxt.Text, price, catTxt.Text, DiscTxt.Text))
+                if (menu.AddMenuItem(nameTxt.Text,price,catTxt.Text,DiscTxt.Text))
                 {
                     MessageBox.Show("Item Added sucessfully");
                 }
                 else {
                     MessageBox.Show("Item not Added try again");
                 }
-            }else if(FormH.Text == "Update"){
+            }else if(FormH.Text == "Update item"){
 
-                if (Menu.ModifyMenuItem(nameTxt.Text, price, catTxt.Text, DiscTxt.Text))
+                if (menu.ModifyMenuItem(nameTxt.Text, price, catTxt.Text, DiscTxt.Text))
                 {
                     MessageBox.Show("Item Update sucessfully");
                 }
@@ -45,19 +45,25 @@ namespace last_fast__mang_sys
                     MessageBox.Show("Item not updated try again");
                 }
             }
-            else if (FormH.Text == "Update")
+            else if (FormH.Text == "Delete item")
             {
-                pricelb.Enabled = false;
-                catlb.Enabled = false;
-                dislb.Enabled = false;
-                if (Menu.DeleteMenuItem(nameTxt.Text))
+                priceTxt.Enabled = false;
+                catTxt.Enabled = false;
+                DiscTxt.Enabled = false;
+                if (menu.DeleteMenuItem(nameTxt.Text))
                 {
                     MessageBox.Show("Item Delete sucessfully");
                 }
-                else {
+                else
+                {
                     MessageBox.Show("Item not deleted try again");
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
