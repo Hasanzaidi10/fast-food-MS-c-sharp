@@ -36,11 +36,13 @@
             this.orderBtn = new System.Windows.Forms.Button();
             this.navBut = new System.Windows.Forms.Label();
             this.userItems = new System.Windows.Forms.DataGridView();
+            this.orderHistory = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.userItems)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderHistory)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -60,6 +62,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackgroundImage = global::last_fast__mang_sys.Properties.Resources.hp_bg1;
+            this.splitContainer1.Panel2.Controls.Add(this.orderHistory);
             this.splitContainer1.Panel2.Controls.Add(this.userItems);
             this.splitContainer1.Panel2.Controls.Add(this.orderBtn);
             this.splitContainer1.Panel2.Controls.Add(this.navBut);
@@ -141,6 +144,15 @@
             this.userItems.Size = new System.Drawing.Size(645, 336);
             this.userItems.TabIndex = 15;
             // 
+            // orderHistory
+            // 
+            this.orderHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.orderHistory.Location = new System.Drawing.Point(17, 120);
+            this.orderHistory.Name = "orderHistory";
+            this.orderHistory.RowTemplate.Height = 28;
+            this.orderHistory.Size = new System.Drawing.Size(645, 336);
+            this.orderHistory.TabIndex = 16;
+            // 
             // userPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -158,6 +170,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.userItems)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orderHistory)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -172,5 +185,6 @@
         private System.Windows.Forms.Button orderBtn;
         private System.Windows.Forms.Label navBut;
         private System.Windows.Forms.DataGridView userItems;
+        private System.Windows.Forms.DataGridView orderHistory;
     }
 }

@@ -7,62 +7,71 @@ using System.Data.SqlClient;
 
 namespace last_fast__mang_sys
 {
-    class order : DataBaseManager
+    class order
     {
 
-         public order(string connectionString)
-            : base(connectionString)
+        public bool StoreUserOrder(string userEmail, string itemName, int quantity)
         {
+            try {
+                string connectionString = "Data Source=(localdb)\\Projects;Initial Catalog=Resturant;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False"; // Replace with your SQL Server connection string
+
+                // SQL query to insert the order details into the table
+                string query = "INSERT INTO Orders (ItemName, UserEmail, TotalAmount) VALUES (@ItemName, @UserEmail, @TotalAmount)";
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    SqlCommand command = new SqlCommand(query, connection);
+
+                    // Calculate the total amount based on the item price from the Menu table and the quantity
+                    decimal totalAmount = CalculateTotalAmount(itemName, quantity);
+
+                    // Add parameters to the command to prevent SQL injection
+                    command.Parameters.AddWithValue("@ItemName", itemName);
+                    command.Parameters.AddWithValue("@UserEmail", userEmail);
+                    command.Parameters.AddWithValue("@TotalAmount", totalAmount);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                return true;
+            }
+            catch {
+                return false;
+            }
         }
 
-        public void PlaceOrder(string itemName, string userEmail, decimal totalAmount)
+        public decimal CalculateTotalAmount(string itemName, int quantity)
         {
-            string query = "INSERT INTO Orders (ItemName, UserEmail, TotalAmount) VALUES (@ItemName, @UserEmail, @TotalAmount)";
+            string connectionString = "Data Source=(localdb)\\Projects;Initial Catalog=Resturant;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False"; // Replace with your SQL Server connection string
 
-            Dictionary<string, object> parameters = new Dictionary<string, object>();
-            parameters["@ItemName"] = itemName;
-            parameters["@UserEmail"] = userEmail;
-            parameters["@TotalAmount"] = totalAmount;
-
-            ExecuteNonQuery(query, parameters);
-
-            Console.WriteLine("Order placed by: " + userEmail);
-        }
-
-        public decimal GetTotalBill(string userEmail)
-        {
-            string query = "SELECT SUM(TotalAmount) FROM Orders WHERE UserEmail = @UserEmail";
-
-            Dictionary<string, object> parameters = new Dictionary<string, object>();
-            parameters["@UserEmail"] = userEmail;
+            // SQL query to retrieve the item price from the Menu table
+            string query = "SELECT Price FROM MenuItemss WHERE Name = @ItemName";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
-                using (SqlCommand command = new SqlCommand(query, connection))
-                {
-                    foreach (var parameter in parameters)
-                    {
-                        command.Parameters.AddWithValue(parameter.Key, parameter.Value);
-                    }
+                SqlCommand command = new SqlCommand(query, connection);
 
-                    try
-                    {
-                        connection.Open();
-                        object result = command.ExecuteScalar();
-                        if (result != DBNull.Value)
-                        {
-                            return Convert.ToDecimal(result);
-                        }
-                    }
-                    catch (SqlException ex)
-                    {
-                        Console.WriteLine("Error executing database query: " + ex.Message);
-                    }
+                // Add parameter to the command to prevent SQL injection
+                command.Parameters.AddWithValue("@ItemName", itemName);
+
+                connection.Open();
+
+                object result = command.ExecuteScalar();
+                if (result != null)
+                {
+                    decimal itemPrice = (decimal)result;
+                    // Calculate the total amount
+                    decimal totalAmount = itemPrice * quantity;
+                    return totalAmount;
+                }
+                else
+                {
+                    // Return 0 if the item price is not found
+                    return 0;
                 }
             }
-
-            return 0;
         }
 
+ 
     }
 }

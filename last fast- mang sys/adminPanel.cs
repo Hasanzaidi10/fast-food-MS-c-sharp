@@ -79,37 +79,75 @@ namespace last_fast__mang_sys
 
         private void navUser_Click(object sender, EventArgs e)
         {
-
-            
-        }
-
-        private void BindDataToGrid()
-        {
-            MenuItems obj = new MenuItems("Data Source=(localdb)\\Projects;Initial Catalog=Resturant;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False");
-
-            DataTable dataTable = obj.GetDataFromDataSource();
-
-            // Clear existing columns and data
-            items.Columns.Clear();
-            items.Rows.Clear();
-
-            // Add columns to the DataGridView
-            foreach (DataColumn column in dataTable.Columns)
-            {
-                items.Columns.Add(column.ColumnName, column.ColumnName);
-            }
-
-            // Add data rows to the DataGridView
-            foreach (DataRow row in dataTable.Rows)
-            {
-                items.Rows.Add(row.ItemArray);
-            }
+            navBut.Text = "Items";
+            items.Refresh();
         }
 
 
         private void adminPanel_Load(object sender, EventArgs e)
         {
-            BindDataToGrid();   
+
+            items.Visible = true;
+            orders.Visible = true;
+            users.Visible = true;
+
+            MenuItems obj = new MenuItems("Data Source=(localdb)\\Projects;Initial Catalog=Resturant;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False");
+
+            if (navBut.Text == "Items")
+            {
+                DataTable itemsData = obj.GetItemsDataFromDataSource();
+                items.DataSource = itemsData;
+                items.BringToFront();
+                orders.SendToBack();
+                users.SendToBack();
+            }
+            else if (navBut.Text == "orders")
+            {
+                DataTable ordersData = obj.GetItemsOrdersDataFromDataSource();
+                orders.DataSource = ordersData;
+                orders.BringToFront();
+                items.SendToBack();
+                users.SendToBack();
+                orders.SendToBack();
+                addBtn.Visible = false;
+                deletebtn.Visible = false;
+                editbtn.Visible = false;
+            }
+            if (navBut.Text == "Users")
+            {
+                DataTable usersData = obj.GetUsersDataFromDataSource();
+                users.DataSource = usersData;
+                users.BringToFront();
+                items.SendToBack();
+                orders.SendToBack();
+                addBtn.Visible = false;
+                deletebtn.Visible = false;
+                editbtn.Visible = false;
+            }
+
+        }
+
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            navBut.Text = "Users";
+            users.Refresh();
+        }
+
+        private void navAdmin_Click(object sender, EventArgs e)
+        {
+            navBut.Text = "orders";
+            orders.Refresh();
+        }
+
+        private void orders_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -30,6 +30,8 @@ namespace last_fast__mang_sys
                 if (menu.AddMenuItem(nameTxt.Text,price,catTxt.Text,DiscTxt.Text))
                 {
                     MessageBox.Show("Item Added sucessfully");
+                    adminPanel obj = new adminPanel();
+                    
                 }
                 else {
                     MessageBox.Show("Item not Added try again");

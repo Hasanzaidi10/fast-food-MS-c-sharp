@@ -15,7 +15,6 @@ namespace last_fast__mang_sys
         public userPanel()
         {
             InitializeComponent();
-
         }
 
         private void navAdmin_Click(object sender, EventArgs e)
@@ -35,15 +34,15 @@ namespace last_fast__mang_sys
 
         private void orderBtn_Click(object sender, EventArgs e)
         {
-            userOrderMenu obj = new userOrderMenu();
+            orderform obj = new orderform();
             obj.Show();
         }
 
-        private void BindDataToGrid()
+        private void BindItemDataToGrid()
         {
             MenuItems obj = new MenuItems("Data Source=(localdb)\\Projects;Initial Catalog=Resturant;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False");
-
-            DataTable dataTable = obj.GetDataFromDataSource();
+      
+            DataTable dataTable = obj.GetItemsDataFromDataSource();
 
             // Clear existing columns and data
             userItems.Columns.Clear();
@@ -60,12 +59,42 @@ namespace last_fast__mang_sys
             {
                 userItems.Rows.Add(row.ItemArray);
             }
+            orderHistory.Visible = false;
+            userItems.Refresh();
+            userItems.BringToFront();
+            orderHistory.SendToBack();
+        }
+        private void BindOrderDataToGrid()
+        {
+            MenuItems obj = new MenuItems("Data Source=(localdb)\\Projects;Initial Catalog=Resturant;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False");
+
+            DataTable dataTable = obj.GetItemsOrdersDataFromDataSource();
+
+            // Clear existing columns and data
+            orderHistory.Columns.Clear();
+            orderHistory.Rows.Clear();
+
+            // Add columns to the DataGridView
+            foreach (DataColumn column in dataTable.Columns)
+            {
+                orderHistory.Columns.Add(column.ColumnName, column.ColumnName);
+            }
+
+            // Add data rows to the DataGridView
+            foreach (DataRow row in dataTable.Rows)
+            {
+                orderHistory.Rows.Add(row.ItemArray);
+            }
+            orderHistory.Visible = false;
+            userItems.Refresh();
+            userItems.BringToFront();
+            orderHistory.SendToBack();
         }
 
 
         private void userPanel_Load(object sender, EventArgs e)
         {
-            BindDataToGrid();
+            BindItemDataToGrid();
         }
 
 

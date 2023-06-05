@@ -10,11 +10,29 @@ using System.Windows.Forms;
 
 namespace last_fast__mang_sys
 {
-    public partial class orderBtn : Form
+    public partial class orderform : Form
     {
-        public orderBtn()
+        public orderform()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            order obj = new order();
+            int qty = int.Parse(QtyTxt.Text);
+            if (obj.StoreUserOrder(EmTxt.Text, itemTxt.Text, qty))
+            {
+                MessageBox.Show("Thank you for Buying \n your total bill is Rs : " + obj.CalculateTotalAmount(itemTxt.Text,qty));
+            }
+            else {
+                MessageBox.Show("some of the detail is invalid ! ");
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

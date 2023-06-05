@@ -34,15 +34,19 @@
             this.navAdmin = new System.Windows.Forms.Button();
             this.navUser = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.users = new System.Windows.Forms.DataGridView();
+            this.orders = new System.Windows.Forms.DataGridView();
+            this.items = new System.Windows.Forms.DataGridView();
             this.deletebtn = new System.Windows.Forms.Button();
             this.editbtn = new System.Windows.Forms.Button();
             this.addBtn = new System.Windows.Forms.Button();
             this.navBut = new System.Windows.Forms.Label();
-            this.items = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.users)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.items)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,6 +58,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.splitContainer1.Panel1.Controls.Add(this.button1);
             this.splitContainer1.Panel1.Controls.Add(this.button3);
             this.splitContainer1.Panel1.Controls.Add(this.navAdmin);
@@ -63,6 +68,9 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.AccessibleName = "dispItems";
+            this.splitContainer1.Panel2.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.splitContainer1.Panel2.Controls.Add(this.users);
+            this.splitContainer1.Panel2.Controls.Add(this.orders);
             this.splitContainer1.Panel2.Controls.Add(this.items);
             this.splitContainer1.Panel2.Controls.Add(this.deletebtn);
             this.splitContainer1.Panel2.Controls.Add(this.editbtn);
@@ -82,6 +90,7 @@
             this.button1.TabIndex = 10;
             this.button1.Text = "Users";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button3
             // 
@@ -92,6 +101,7 @@
             this.button3.TabIndex = 9;
             this.button3.Text = "Exit";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // navAdmin
             // 
@@ -100,8 +110,9 @@
             this.navAdmin.Name = "navAdmin";
             this.navAdmin.Size = new System.Drawing.Size(206, 66);
             this.navAdmin.TabIndex = 8;
-            this.navAdmin.Text = "Place Order";
+            this.navAdmin.Text = "orders";
             this.navAdmin.UseVisualStyleBackColor = true;
+            this.navAdmin.Click += new System.EventHandler(this.navAdmin_Click);
             // 
             // navUser
             // 
@@ -123,6 +134,37 @@
             this.label1.Size = new System.Drawing.Size(241, 46);
             this.label1.TabIndex = 6;
             this.label1.Text = "Admin panel";
+            // 
+            // users
+            // 
+            this.users.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.users.Location = new System.Drawing.Point(42, 108);
+            this.users.Name = "users";
+            this.users.RowTemplate.Height = 28;
+            this.users.Size = new System.Drawing.Size(667, 337);
+            this.users.TabIndex = 23;
+            this.users.Visible = false;
+            // 
+            // orders
+            // 
+            this.orders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.orders.Location = new System.Drawing.Point(42, 108);
+            this.orders.Name = "orders";
+            this.orders.RowTemplate.Height = 28;
+            this.orders.Size = new System.Drawing.Size(667, 337);
+            this.orders.TabIndex = 22;
+            this.orders.Visible = false;
+            this.orders.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.orders_CellContentClick);
+            // 
+            // items
+            // 
+            this.items.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.items.Location = new System.Drawing.Point(42, 108);
+            this.items.Name = "items";
+            this.items.RowTemplate.Height = 28;
+            this.items.Size = new System.Drawing.Size(667, 337);
+            this.items.TabIndex = 21;
+            this.items.Visible = false;
             // 
             // deletebtn
             // 
@@ -162,18 +204,9 @@
             this.navBut.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.navBut.Location = new System.Drawing.Point(257, 24);
             this.navBut.Name = "navBut";
-            this.navBut.Size = new System.Drawing.Size(113, 37);
+            this.navBut.Size = new System.Drawing.Size(94, 37);
             this.navBut.TabIndex = 16;
-            this.navBut.Text = "ITEMS";
-            // 
-            // items
-            // 
-            this.items.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.items.Location = new System.Drawing.Point(21, 108);
-            this.items.Name = "items";
-            this.items.RowTemplate.Height = 28;
-            this.items.Size = new System.Drawing.Size(667, 337);
-            this.items.TabIndex = 21;
+            this.navBut.Text = "Items";
             // 
             // adminPanel
             // 
@@ -190,6 +223,8 @@
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.users)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.orders)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.items)).EndInit();
             this.ResumeLayout(false);
 
@@ -208,5 +243,7 @@
         private System.Windows.Forms.Button deletebtn;
         private System.Windows.Forms.Button editbtn;
         private System.Windows.Forms.DataGridView items;
+        private System.Windows.Forms.DataGridView users;
+        private System.Windows.Forms.DataGridView orders;
     }
 }

@@ -16,20 +16,53 @@ namespace last_fast__mang_sys
         {
         }
 
-        public DataTable GetDataFromDataSource()
-        {
-            string connectionString = "Data Source=(localdb)\\Projects;Initial Catalog=Resturant;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False";
-            string query = "SELECT * FROM MenuItemss";
+             private SqlConnection GetSqlConnection()
+             {
+                 string connectionString = "Data Source=(localdb)\\Projects;Initial Catalog=Resturant;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False";
+                 return new SqlConnection(connectionString);
+             }
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
-                DataTable dataTable = new DataTable();
-                adapter.Fill(dataTable);
+             public DataTable GetItemsDataFromDataSource()
+             {
+                 string query = "SELECT * FROM MenuItemss";
 
-                return dataTable;
-            }
-        }
+                 using (SqlConnection connection = GetSqlConnection())
+                 {
+                     SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                     DataTable dataTable = new DataTable();
+                     adapter.Fill(dataTable);
+
+                     return dataTable;
+                 }
+             }
+
+             public DataTable GetItemsOrdersDataFromDataSource()
+             {
+                 string query = "SELECT * FROM Orders";
+
+                 using (SqlConnection connection = GetSqlConnection())
+                 {
+                     SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                     DataTable dataTable = new DataTable();
+                     adapter.Fill(dataTable);
+
+                     return dataTable;
+                 }
+             }
+
+             public DataTable GetUsersDataFromDataSource()
+             {
+                 string query = "SELECT * FROM Users";
+
+                 using (SqlConnection connection = GetSqlConnection())
+                 {
+                     SqlDataAdapter adapter = new SqlDataAdapter(query, connection);
+                     DataTable dataTable = new DataTable();
+                     adapter.Fill(dataTable);
+
+                     return dataTable;
+                 }
+             }
 
 
         public bool AddMenuItem(string name, int price, string category, string description)

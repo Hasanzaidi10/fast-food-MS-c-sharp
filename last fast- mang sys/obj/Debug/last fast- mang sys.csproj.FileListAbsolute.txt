@@ -19,10 +19,10 @@ C:\Users\user\Desktop\hn\fast-food-MS-c-sharp\last fast- mang sys\obj\Debug\last
 C:\Users\user\Desktop\hn\fast-food-MS-c-sharp\last fast- mang sys\obj\Debug\last_fast__mang_sys.Form1.resources
 C:\Users\user\Desktop\hn\fast-food-MS-c-sharp\last fast- mang sys\obj\Debug\last_fast__mang_sys.Login.resources
 C:\Users\user\Desktop\hn\fast-food-MS-c-sharp\last fast- mang sys\obj\Debug\last_fast__mang_sys.Properties.Resources.resources
-C:\Users\user\Desktop\hn\fast-food-MS-c-sharp\last fast- mang sys\obj\Debug\last_fast__mang_sys.userOrderMenu.resources
 C:\Users\user\Desktop\hn\fast-food-MS-c-sharp\last fast- mang sys\obj\Debug\last_fast__mang_sys.userPanel.resources
 C:\Users\user\Desktop\hn\fast-food-MS-c-sharp\last fast- mang sys\obj\Debug\last fast- mang sys.csproj.GenerateResource.Cache
 C:\Users\user\Desktop\hn\fast-food-MS-c-sharp\last fast- mang sys\bin\Debug\last fast- mang sys.exe
 C:\Users\user\Desktop\hn\fast-food-MS-c-sharp\last fast- mang sys\bin\Debug\last fast- mang sys.pdb
 C:\Users\user\Desktop\hn\fast-food-MS-c-sharp\last fast- mang sys\obj\Debug\last fast- mang sys.pdb
 C:\Users\user\Desktop\hn\fast-food-MS-c-sharp\last fast- mang sys\obj\Debug\last_fast__mang_sys.adminPanel.resources
+C:\Users\user\Desktop\hn\fast-food-MS-c-sharp\last fast- mang sys\obj\Debug\last_fast__mang_sys.orderform.resources
